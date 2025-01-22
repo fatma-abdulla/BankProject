@@ -1,0 +1,73 @@
+﻿@using BankProject.Models.ViewModels
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+<form method="post" asp-action="Register">
+    <div asp-validation-summary="All" class="text-danger">
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <td><label asp-for="UserName"></label> </td>
+            <td>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Email"></label> </td>
+            <td>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Password"></label> </td>
+            <td>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ConfirmPassword"></label> </td>
+            <td>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Mobile"></label> </td>
+            <td>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td><label asp-for="Gender"></label> </td>
+            <td>
+                <input asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<ApplicationUser.Genders>()"/>
+                <option value="-1">--------------Select Gender--------------</option>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="DateOfBirth"></label> </td>
+            <td>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Register" class="btn btn-primary" />
+                <a asp-action="Login">I have account</a>
+            </td>
+        </tr>
+
+
+    </table>
+
+</form>
