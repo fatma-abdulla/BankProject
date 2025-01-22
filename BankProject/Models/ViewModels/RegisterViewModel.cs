@@ -4,7 +4,6 @@ namespace BankProject.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Enter Email Address")]
         [EmailAddress]
@@ -29,6 +28,9 @@ namespace BankProject.Models.ViewModels
 
         public string? Mobile { get; set; }
         public Genders Gender { get; set; }
-        public DateTime DateofBirth { get; set; }
+        [DataType(DataType.Date)]
+        public DateOnly DateOfBirth { get; set; }
+        public string Name { get; set; }    
+        public decimal balance { get; set; }
     }
 }

@@ -1,0 +1,45 @@
+﻿@using BankProject.Models.ViewModels
+@model LoginViewModel;
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form method="post" asp-action="login">
+	<div asp-validation-summary="All" class=" =text-danger"></div>
+
+	<div class="card shadow-sm">
+		<div class="card-body">
+			<table class="table table-bordered">
+
+				<tr>
+					<td><label asp-for="Email" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="Email" class="form-control" placeholder="Enter Email" />
+						<span asp-validation-for="Email" class="text-danger"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td><label asp-for="Password" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="Password" class="form-control" placeholder="Enter Password" />
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</td>
+				</tr>
+				<tr>
+					<td><label asp-for="RememberMe" class="font-weight-bold"></label></td>
+					<td>
+						<input asp-for="RememberMe" class="form-check-input" />
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2" class="text-center">
+						<input type="submit" class="btn btn-outline-success btn-lg" value="Register" />
+					</td>
+			</table>
+		</div>
+	</div>
+</form>

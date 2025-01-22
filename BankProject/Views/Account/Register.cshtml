@@ -10,17 +10,25 @@
     </div>
     <table class="table table-bordered">
         <tr>
-            <td><label asp-for="UserName"></label> </td>
+            <td><label asp-for="Name"></label> </td>
             <td>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </td>
         </tr>
+
         <tr>
             <td><label asp-for="Email"></label> </td>
             <td>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ConfirmEmail"></label> </td>
+            <td>
+                <input asp-for="ConfirmEmail" class="form-control" />
+                <span asp-validation-for="ConfirmEmail" class="text-danger"></span>
             </td>
         </tr>
         <tr>
@@ -44,15 +52,22 @@
                 <span asp-validation-for="Mobile" class="text-danger"></span>
             </td>
         </tr>
-
-
         <tr>
-            <td><label asp-for="Gender"></label> </td>
+            <td><label asp-for="Gender" class="font-weight-bold"></label></td>
             <td>
-                <input asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<ApplicationUser.Genders>()"/>
-                <option value="-1">--------------Select Gender--------------</option>
+                <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<ApplicationUser.Genders>()">
+                    <option value="-1">------------ Select Gender ----------</option>
+                </select>
             </td>
         </tr>
+        <tr>
+            <td><label asp-for="balance"></label> </td>
+            <td>
+                <input asp-for="balance" class="form-control" />
+                <span asp-validation-for="balance" class="text-danger"></span>
+            </td>
+        </tr>
+
         <tr>
             <td><label asp-for="DateOfBirth"></label> </td>
             <td>
@@ -61,13 +76,12 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <input type="submit" value="Register" class="btn btn-primary" />
-                <a asp-action="Login">I have account</a>
+            <td colspan="2" class="text-center">
+                <input type="submit" class="btn btn-outline-success btn-lg" value="Register" />
+                <a asp-action="Login">I Have Account</a>
             </td>
-        </tr>
 
-
+            </tr>
     </table>
 
 </form>
