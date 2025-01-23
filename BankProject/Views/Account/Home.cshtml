@@ -15,8 +15,11 @@
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">Welcome @Model.Name</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Your Available Balance : </h6>
+        <h5 class="card-title">Your Available balance is @Model.balance</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Select action : </h6>
         <p class="card-text"> @Model.balance KWD</p>
+        <a href="@Url.Action("Deposit", "Account")" class="btn btn-primary">Deposit
+        </a>
+        <a href="@Url.Action("Withdraw", "Account")" class="btn btn-danger" style="margin-left: 10px;">Withdraw</a>
     </div>
 </div>

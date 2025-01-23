@@ -1,0 +1,19 @@
+﻿@using BankProject.Models.ViewModels
+@model ApplicationUser
+
+
+<h1>@Model.Name's Details</h1>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Name: @Model.Name</h5>
+        <p class="card-text">Email: @Model.Email</p>
+        <p class="card-text">Phone: @Model.PhoneNumber</p>
+        <p class="card-text">Balance: @Model.balance KWD</p>
+
+        <p class="card-text">Date of Birth: @Model.DateOfBirth.ToString("yyyy-MM-dd")</p>
+        <p class="card-text">Gender: @Model.Gender</p>
+
+        <a href="@Url.Action("AllUsers", "Account")" class="btn btn-primary">Back to All Users</a>
+    </div>
+</div>

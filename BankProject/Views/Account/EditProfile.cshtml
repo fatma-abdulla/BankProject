@@ -1,0 +1,57 @@
+﻿@model BankProject.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "EditProfile";
+}
+
+<h1>EditProfile</h1>
+
+<h4>RegisterViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditProfile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="balance" class="control-label"></label>
+                <input asp-for="balance" class="form-control" />
+                <span asp-validation-for="balance" class="text-danger"></span>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+            <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<ApplicationUser.Genders>()">
+                <option value="-1">------------ Select Gender ----------</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

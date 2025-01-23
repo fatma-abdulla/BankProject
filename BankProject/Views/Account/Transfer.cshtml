@@ -1,0 +1,17 @@
+﻿@using BankProject.Models.ViewModels
+@model TransferViewModel
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+<h1>Transfer</h1>
+
+<form asp-action="Transfer" method="post">
+    @Html.HiddenFor(x=>x.FirstUserId)
+    <div class="mb-3">
+        <label for="TransferredAmount" class="form-label"> Amount </label>
+        <input class="form-control" asp-for="TransferredAmount">
+        <span asp-validation-for="TransferredAmount" class="text-danger" asp-route-id=""></span>
+    </div>
+    <input type="submit" value="Transfer" class="btn btn-success" />
+</form>

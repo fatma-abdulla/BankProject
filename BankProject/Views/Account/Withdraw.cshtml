@@ -1,11 +1,11 @@
 ﻿@using BankProject.Models.ViewModels
 @model DepositViewModel
 @{
-    ViewData["Title"] = "Deposit";
+    ViewData["Title"] = "Withdraw";
 }
 
 <h1>Deposit</h1>
-<form asp-action="Deposit" method="post">
+<form asp-action="Withdraw" method="post">
     @Html.HiddenFor(x=>x.FirstUserId)
 <div class="mb-3">
     <input class="form-control" value="@Model.balance">
@@ -14,5 +14,5 @@
     <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
     <input class="form-control" asp-for="Newbalance">
 </div>
-<input type="submit" value="Deposit" class="btn btn-success" />
+<input type="submit" value="Withdraw" class="btn btn-success" />
 </form>

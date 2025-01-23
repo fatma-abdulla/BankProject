@@ -8,6 +8,7 @@ namespace BankProject.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        DbSet<ApplicationUser> Gender { get; set; }
+        public DbSet<ApplicationUser> Gender { get; set; }
+        public DbSet<Transactions> Transactions { get; set; }
     }
 }

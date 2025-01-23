@@ -1,0 +1,25 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Name: @Model.Name</h5>
+        <p class="card-text">Email: @Model.Email</p>
+        <p class="card-text">Phone: @Model.PhoneNumber</p>
+        <p class="card-text">Balance: @Model.balance KWD</p>
+        <p class="card-text">Balance: @Model.Gender</p>
+        <p class="card-text">Balance: @Model.UserName</p>
+        <p class="card-text">Date of Birth: @Model.DateOfBirth.ToString("yyyy-MM-dd")</p>
+        <p class="card-text">Gender: @Model.Gender</p>
+                    <div class="d-flex justify-content-between">
+        <a asp-action="AllUsers" asp-controller="Account" asp-route-id="@Model.Id" class="btn btn-primary">Return to All Users</a>
+        <a asp-action="EditProfile" asp-controller="Account" asp-route-id="@Model.Id" class="btn btn-primary">Edit Profile</a>
+        </div>
+        </div>
+    </div>
+</div>

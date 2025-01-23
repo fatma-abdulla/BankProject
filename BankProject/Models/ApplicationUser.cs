@@ -12,5 +12,6 @@ namespace BankProject.Models
 
         public Genders Gender { get ; set; }    
         public enum Genders { male, female}
+
     }
 }
