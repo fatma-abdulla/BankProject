@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace BankProject.Models.ViewModels
 {
     public class EditViewModel
-    {
+    { 
         public string? Mobile { get; set; }
         public Genders Gender { get; set; }
         [DataType(DataType.Date)]

@@ -280,6 +280,9 @@ namespace BankProject.Controllers
             {
                 var user = await userManager.FindByNameAsync(model.Name);
                 user.Name = model.Name;
+                user.Gender = model.Gender;
+                user.DateOfBirth = model.DateOfBirth;
+                user.PhoneNumber = model.Mobile;
                 //continue name and pohone and the rest 
                 await userManager.UpdateAsync(user);
                 return RedirectToAction("RolesList");
