@@ -16,14 +16,17 @@ namespace BankProject.Controllers
         private UserManager<ApplicationUser> userManager;
         private SignInManager<ApplicationUser> signInManager;
         private ApplicationDbContext db;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
         public AccountController(UserManager<ApplicationUser> _userManager,
             SignInManager<ApplicationUser> _signInManager,
-            ApplicationDbContext _db)
+            ApplicationDbContext _db,
+            IWebHostEnvironment hostEnvironment)
         {
             signInManager = _signInManager;
             userManager = _userManager;
             db = _db;
+            webHostEnvironment = hostEnvironment;
         }
         public IActionResult Register()
         {
@@ -34,6 +37,7 @@ namespace BankProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                string? uniqueFileName = UploadedFile(model);
                 ApplicationUser user = new ApplicationUser()
                 {
                     Name = model.Name,
@@ -42,8 +46,10 @@ namespace BankProject.Controllers
                     PhoneNumber = model.Mobile,
                     Gender = model.Gender,
                     DateOfBirth = model.DateOfBirth,
-                    balance = model.balance
+                    balance = model.balance,
+                    ProfilePicture ="~/img/"+ uniqueFileName
                 };
+
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -57,7 +63,21 @@ namespace BankProject.Controllers
                 }
             }
             return View(model);
-
+        }
+        private string UploadedFile(RegisterViewModel model)
+        {
+            string uniqueFileName = null;
+            if (model.ProfileImage != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "img");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProfileImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ProfileImage.CopyTo(fileStream);
+                }
+            }
+            return uniqueFileName;
         }
         public IActionResult Login()
         {
@@ -185,6 +205,33 @@ namespace BankProject.Controllers
             };
             return View(model);
         }
+        [HttpPost]
+        public async Task<IActionResult> Transactions(string ttype, decimal byAmount)
+        {
+            var user = await userManager.GetUserAsync(User);
+            var model = new TransactionViewModel
+            {
+                UserName = user.Name,
+                Transactions = await db.Transactions.Where(x => x.TransactionType == ttype).ToListAsync()
+            };
+            if (ttype=="All")
+            {
+                 model = new TransactionViewModel
+                {
+                    UserName = user.Name,
+                    Transactions = await db.Transactions.Where(x => x.UserId == user.Id).ToListAsync()
+                };
+            }
+            if (byAmount != 0)
+            {
+                model = new TransactionViewModel
+                {
+                    UserName = user.Name,
+                    Transactions = await db.Transactions.Where(x => x.Newbalance == byAmount).ToListAsync()
+                };
+            }
+            return View(model);
+        }
         public async Task<IActionResult> AllUsers()
         {
             var CurrentUser = await userManager.GetUserAsync(User);
@@ -259,22 +306,12 @@ namespace BankProject.Controllers
             return View(user);
         }
         [HttpGet]
-        public async Task<IActionResult> EditProfile(EditViewModel model)
+        public async Task<IActionResult> EditProfile()
         {
-
-            var pro = new EditViewModel
-            {
-                Name = model.Name,
-                //PhoneNumber = model.Mobile,
-                Gender = model.Gender,
-                DateOfBirth = model.DateOfBirth,
-                balance = model.balance
-
-            };
-            return View(model);
+            return View();
         }
         [HttpPost]
-        public async Task<IActionResult> EditRole(EditViewModel model)
+        public async Task<IActionResult> EditProfile(EditViewModel model)
         {
             if (ModelState.IsValid)
             {

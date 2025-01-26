@@ -4,15 +4,18 @@
     ViewData["Title"] = "Deposit";
 }
 
-<h1>Deposit</h1>
+<div class="card fade-in">
+   
+    <h1 class="highlight">Deposit</h1>
 <form asp-action="Deposit" method="post">
     @Html.HiddenFor(x=>x.FirstUserId)
 <div class="mb-3">
     <input class="form-control" value="@Model.balance">
 </div>
 <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <label for="exampleFormControlTextarea1" class="form-label">Enter Amount</label>
     <input class="form-control" asp-for="Newbalance">
 </div>
 <input type="submit" value="Deposit" class="btn btn-success" />
 </form>
+</div>  

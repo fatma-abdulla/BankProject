@@ -8,8 +8,11 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh;">
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">Name: @Model.Name</h5>
-        <p class="card-text">Email: @Model.Email</p>
+        <h5 class="card-title"> @Model.Name</h5>
+            <p class="card-text">
+                <img src="@Url.Content( Model.ProfilePicture)" class="card-img-top" alt="Profile Picture" style="width: 100%; height: auto; border-radius: 50%;" />
+            </p>
+            <p class="card-text">Email: @Model.Email</p>
         <p class="card-text">Phone: @Model.PhoneNumber</p>
         <p class="card-text">Balance: @Model.balance KWD</p>
         <p class="card-text">Balance: @Model.Gender</p>

@@ -7,6 +7,19 @@
 
 <h1>Transactions</h1>
 
+
+<form method="post" asp-action="Transactions">
+	<select name="ttype" class="form-control">
+		<option value="All">All</option>
+		<option value="Deposit">Deposit</option>
+		<option value="Withdraw">Withdraw</option>
+				<option value="Transferred Money">Transferrred Money</option>
+		<option value="Recieved Money ">Recieved Money</option>
+	</select>
+	<input name="byAmount" placeholder="Enter Amount " class="form-control" />
+	<input type="submit" class="btn btn-success" value="Search" />
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,9 +32,23 @@
         @foreach (var item in Model.Transactions)
         {
             <tr>
-                <td>@item.TransactionType</td>
+				@if (item.TransactionType == "Deposit")
+				{
+					<td class="text-success"> @item.TransactionType</td>
+				}
+				else
+				{
+					<td class="text-danger"> @item.TransactionType</td>
+				}
                 <td>@item.TransationDate)</td>
-                <td>@item.Newbalance</td>
+				@if (item.TransactionType == "Deposit")
+				{
+					<td class="text-success">+ @item.Newbalance</td>
+				}
+				else
+				{
+					<td class="text-danger">- @item.Newbalance</td>
+				}
             </tr>
         }
     </tbody>

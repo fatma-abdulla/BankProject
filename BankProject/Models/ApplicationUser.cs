@@ -11,6 +11,7 @@ namespace BankProject.Models
         public DateOnly DateOfBirth { get; set; }   
 
         public Genders Gender { get ; set; }    
+        public string? ProfilePicture { get; set; }
         public enum Genders { male, female}
 
     }

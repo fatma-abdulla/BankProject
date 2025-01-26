@@ -3,10 +3,17 @@
     ViewData["Title"] = "Home";
 }
 
+<div class="card fade-in justify-content-center " >
+    
+
 <h1>Home</h1>
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
+            <p class="card-text">
+                <img src="@Url.Content(Model.ProfilePicture)" class="card-img-top" alt="Profile Picture" style="width: 100%; height: auto; border-radius: 50%;" />
+            </p>
+
         <h5 class="card-title">Welcome @Model.Name</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">Your Available Balance : </h6>
         <p class="card-text"> @Model.balance KWD</p>
@@ -22,4 +29,5 @@
         </a>
         <a href="@Url.Action("Withdraw", "Account")" class="btn btn-danger" style="margin-left: 10px;">Withdraw</a>
     </div>
+</div>
 </div>
